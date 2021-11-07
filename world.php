@@ -17,11 +17,28 @@ if(isset($_GET['country'])){
   $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
-<ul>
-<?php foreach ($results as $row): ?>
-  <li><?= $row['name'] . ' is ruled by ' . $row['head_of_state']; ?></li>
-<?php endforeach; ?>
-</ul>
+
+<table id="table">
+  <thead>
+      <th>Name</th>
+      <th>Continent</th>
+      <th>Independence</th>
+      <th>Head of State</th>
+  </thead>
+  <tbody>
+  <?php    
+    foreach ($results as $row) { ?>
+    <tr>
+        <td><?php echo $row['name'] ; ?></td>
+        <td><?php echo $row['continent'] ; ?></td>
+        <td><?php echo $row['independence_year'] ; ?></td>
+        <td><?php echo $row['head_of_state']; ?></td>
+    </tr>
+  <?php
+  }
+  ?>
+  </tbody>
+</table> 
 
 <?php
 //Sanitize the user input from the search text field
