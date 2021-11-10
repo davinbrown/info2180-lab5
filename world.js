@@ -1,30 +1,40 @@
 window.onload = function() {
-    var httpRequest;
 
-    document.getElementById("lookup").addEventListener("click", function(event) {
+    document.getElementById("lookup").addEventListener("click", lookupWorld);
+    document.getElementById("lookup_cites").addEventListener("click", lookupCites);
+    
+    function lookupWorld(event) {
         event.preventDefault();
+        $searchTerm = getInput();
+        $query = "?country=" + $searchTerm;
+        sendGetRequest($query);  //send request
+    }
 
-        httpRequest = new XMLHttpRequest();
+    function lookupCites(event) {
+        event.preventDefault();
+        $searchTerm = getInput();
+        $query = "?country=" + $searchTerm + "&context=cities";
+        sendGetRequest($query); //send request
+    }
 
+    function getInput() {
         var letters_only = /^[a-zA-Z\s]*$/;
-
         // get search input
         var searchTerm = document.getElementById("country").value.trim();
-        
-        if (searchTerm == "") {
-            var queryStr = "";
+        if (letters_only.test(searchTerm)) {
+            return searchTerm;
         }else{
-            // sanitise query
-            if (letters_only.test(searchTerm)) {
-                var queryStr = "?country=" + searchTerm;
-            }
+            return false;
         }
+    }
 
-        //request 
+    function sendGetRequest(queryStr) {
+        
+        var httpRequest;
+        httpRequest = new XMLHttpRequest();
         httpRequest.onreadystatechange = searchWorld;
         httpRequest.open("GET", "world.php" + queryStr );
         httpRequest.send();
-
 
         function searchWorld(){
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -40,6 +50,6 @@ window.onload = function() {
                 // Not ready yet.
             }
         }
-    });
 
+    }
 };
