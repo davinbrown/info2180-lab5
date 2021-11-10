@@ -1,1 +1,89 @@
 /* Add your own styles */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: helvetica;
+}
+
+:root {
+    --river-bed: #134f5c;
+    --lightgrey: #cccccc;
+    --white: #ffffff;
+    --blumine: #165c6b;
+    --sec-blumine: #156c7f;
+}
+
+header{
+    background-color: var(--river-bed);
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    line-height: 150px;
+    margin: auto;
+}
+
+#controls{
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+input{
+    width: 60%;
+    height: 40px;
+    border: none;
+    box-shadow: 1px 1px 2px 1px var(--lightgrey);
+    border-radius: 5px;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+button{
+    width: 20%;
+    color: var(--white);
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    cursor: pointer;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+#lookup{
+    background-color: var(--blumine);
+}
+
+#lookup_cites{
+    background-color: var(--sec-blumine);
+}
+
+#result{
+    width: 60%;
+    padding-top: 40px;
+    margin: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+th {
+    background-color: var(--lightgrey);
+    border: 1px solid var(--blumine);
+    text-align: center;
+    font-weight: bold;
+    padding: 8px;
+}
+
+td {
+    border: 1px solid var(--lightgrey);
+    text-align: center;
+    padding: 8px;
+}
